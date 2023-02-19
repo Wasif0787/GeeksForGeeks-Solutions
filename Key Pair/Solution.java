@@ -1,19 +1,24 @@
 class Solution {
     boolean hasArrayTwoCandidates(int arr[], int n, int x) {
         // code here
-        Arrays.sort(arr);
-        int lp=0;
-        int rp=arr.length-1;
-        while(lp!=rp){
-            if(arr[lp]+arr[rp]==x){
+        HashSet<Integer> hs = new HashSet<>();
+
+        for(int i=0;i<n;i++){
+
+            int val = arr[i];
+
+            if(hs.contains(x-val)){
+
                 return true;
+
+            }else{
+
+          hs.add(val);
+
             }
-            if(arr[lp]+arr[rp]<=x){
-                lp++;
-            } else {
-                rp--;
-            }
+
         }
-        return false;
+
+          return false;
     }
 }
